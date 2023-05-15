@@ -1,7 +1,7 @@
-package org.example.ch2.text;
+package org.example.ch2.LL1.text;
 
-import org.example.ch2.ListLexer;
-import org.example.ch2.ListParser;
+import org.example.ch2.LL1.ListLexer;
+import org.example.ch2.LL1.ListParser;
 
 public class ListParserTest {
     public static void main(String[] args) {

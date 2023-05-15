@@ -1,4 +1,4 @@
-package org.example.ch2;
+package org.example.ch2.LL1;
 
 public class ListParser extends Parser {
     public ListParser(Lexer lexer) {

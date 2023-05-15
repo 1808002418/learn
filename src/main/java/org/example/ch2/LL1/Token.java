@@ -1,4 +1,4 @@
-package org.example.ch2;
+package org.example.ch2.LL1;
 
 public class Token {
     private final int type;

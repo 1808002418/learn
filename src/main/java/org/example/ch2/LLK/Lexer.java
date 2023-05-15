@@ -1,4 +1,4 @@
-package org.example.ch2;
+package org.example.ch2.LLK;
 
 public abstract class Lexer {
     protected static final char EOF=(char)-1;
@@ -8,7 +8,7 @@ public abstract class Lexer {
     protected int p=0;
     protected char c;
 
-    public Lexer(String input) {
+    protected Lexer(String input) {
         this.input = input;
         this.c=input.charAt(p);
     }

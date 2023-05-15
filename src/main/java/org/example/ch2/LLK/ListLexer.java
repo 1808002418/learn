@@ -1,4 +1,4 @@
-package org.example.ch2;
+package org.example.ch2.LLK;
 
 /**
  * list 词法解析器
@@ -8,13 +8,15 @@ public class ListLexer extends Lexer {
     public static final int COMMA = 3;
     public static final int LBRACK = 4;
     public static final int RBRACK = 5;
+    public static final int EQUALS = 6;
     public static final String[] tokenNames = {
             "n/a",
             "<EOF>",
             "NAME",
             "COMMA",
             "LBRACK",
-            "RBRACK"
+            "RBRACK",
+            "EQUALS"
     };
 
     private Token terminalToken;
@@ -50,11 +52,13 @@ public class ListLexer extends Lexer {
                     return new Token(LBRACK, "[", this);
                 case ']':
                     consume();
-                    ;
                     return new Token(RBRACK, "]", this);
                 case ',':
                     consume();
                     return new Token(COMMA, ",", this);
+                case '=':
+                    consume();
+                    return new Token(EQUALS,"=",this);
                 default:
                     if (isWhitespace()) {
                         consume();
