@@ -24,6 +24,8 @@ public class ListParser extends Parser{
                 list();
                 break;
             case ListLexer.NAME:
+                // 但这种switch的写法不符合实际的文法推理过程 回溯
+                // if的写法就很符合. 如果这个判断推演结果不一致就回溯到开头重新匹配
                 match(ListLexer.NAME);
                 if (LA(1)==ListLexer.EQUALS){
                     match(ListLexer.EQUALS);
