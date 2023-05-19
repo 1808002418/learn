@@ -1,4 +1,4 @@
-package org.example.ch3.backtrack;
+package org.example.ch3;
 
 public class NoViableAltException extends RecognitionException {
     public NoViableAltException(String message) {

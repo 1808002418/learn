@@ -1,4 +1,4 @@
-package org.example.ch3.backtrack;
+package org.example.ch3;
 
 public abstract class RecognitionException extends RuntimeException{
 

@@ -1,16 +1,26 @@
-package org.example.ch3.backtrack;
+package org.example.ch3.memoize;
 
 import org.example.ch3.MismatchedTokenException;
 import org.example.ch3.NoViableAltException;
 import org.example.ch3.RecognitionException;
 
-/**
- * list 回溯解析器
- */
-public class BacktrackParser extends Parser {
+import java.util.HashMap;
+import java.util.Map;
 
-    public BacktrackParser(Lexer lexer) {
+/**
+ * list 回溯记忆解析器
+ */
+public class MemoizeParser extends Parser {
+    private final Map<Integer, Integer> listMemoize;
+
+    public MemoizeParser(Lexer lexer) {
         super(lexer);
+        listMemoize = new HashMap<>();
+    }
+
+    @Override
+    protected void clearMemize() {
+        listMemoize.clear();
     }
 
     public void stat() throws RecognitionException {
@@ -57,7 +67,26 @@ public class BacktrackParser extends Parser {
         return success;
     }
 
+
     private void list() {
+        boolean failed = false;
+        int startTokenIndex = p;
+        if (isSpeculating() && alreadyParserdRule(listMemoize)) {
+            return;
+        }
+        try {
+            _list();
+        } catch (RecognitionException re) {
+            failed = true;
+            throw re;
+        } finally {
+            if (isSpeculating()) {
+                memoize(listMemoize, startTokenIndex, failed);
+            }
+        }
+    }
+
+    private void _list() {
         match(ListLexer.LBRACK);
         elements();
         match(ListLexer.RBRACK);
