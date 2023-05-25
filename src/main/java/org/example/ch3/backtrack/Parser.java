@@ -54,7 +54,8 @@ public abstract class Parser {
 
     protected void fill(int n) {
         for (int i = 0; i < n; i++) {
-            lookahead.add(lexer.nextToken());
+            Token token = lexer.nextToken();
+            lookahead.add(token);
         }
     }
 
@@ -67,11 +68,13 @@ public abstract class Parser {
 
     protected Token LT(int i) {
         sync(i);
-        return lookahead.get(p + i - 1);
+        Token token = lookahead.get(p + i - 1);
+        return token;
     }
 
     protected int LA(int i) {
-        return LT(i).getType();
+        Token token = LT(i);
+        return token.getType();
     }
 
     protected void match(int type) throws MismatchedTokenException {
