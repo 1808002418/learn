@@ -7,13 +7,11 @@
  * Visit http://www.pragmaticprogrammer.com/titles/tpdsl for more book information.
 ***/
 public class Token {
-    public static final int INVALID_TOKEN_TYPE = 0;
-    public static final int PLUS = 1; // token types
-    public static final int INT = 2;
-    
     public int type;
     public String text;
     public Token(int type, String text) { this.type = type; this.text = text; }
-    public Token(int type) { this.type = type; }
-    public String toString() { return text; }
+    public String toString() {
+        String tname = BacktrackLexer.tokenNames[type];
+        return "<'"+text+"',"+tname+">";
+    }
 }

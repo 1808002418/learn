@@ -6,11 +6,8 @@
  * We make no guarantees that this code is fit for any purpose. 
  * Visit http://www.pragmaticprogrammer.com/titles/tpdsl for more book information.
 ***/
-import java.util.List;
-public class VectorNode extends ExprNode {
-    public VectorNode(Token t, List<ExprNode> elements) {
-        super(t); // track vector token; likely to be imaginary token
-        evalType = tVECTOR;
-        for (ExprNode e : elements) { addChild(e); } // add as kids
+public abstract class RecognitionException extends Exception {
+    public RecognitionException(String msg) {
+        super(msg);
     }
 }
