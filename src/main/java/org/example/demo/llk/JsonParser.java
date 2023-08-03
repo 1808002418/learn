@@ -32,8 +32,12 @@ public class JsonParser extends AbstractParser<ASTree> {
     private ASTree object() {
 
         match(TokenType.LBRACE);
+
+        // 空对象
         ASTree tree = new JsonNode();
-        attributes(tree);
+        if (LA(1)!= TokenType.RBRACE) {
+            attributes(tree);
+        }
         match(TokenType.RBRACE);
 
         return tree;
@@ -41,7 +45,12 @@ public class JsonParser extends AbstractParser<ASTree> {
 
     private ASTree array() {
         match(TokenType.LBRACK);
+
+        // 空数组
         ASTree tree = new ArrayNode();
+        if (LA(1)!= TokenType.RBRACK) {
+            elements(tree);
+        }
         elements(tree);
         match(TokenType.RBRACK);
         return tree;

@@ -16,6 +16,9 @@ public class ASTHelper extends ASTree {
 
     @Override
     protected void fillJSONArray(JSONArray array) {
+        if (array==null){
+            return;
+        }
         for (ASTree child : children) {
             if (child.isJSONObject()) {
                 array.add(child.toJSONObject());
