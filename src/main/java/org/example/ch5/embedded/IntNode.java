@@ -1,3 +1,5 @@
+package org.example.ch5.embedded;
+
 /***
  * Excerpted from "Language Implementation Patterns",
  * published by The Pragmatic Bookshelf.
@@ -6,14 +8,6 @@
  * We make no guarantees that this code is fit for any purpose. 
  * Visit http://www.pragmaticprogrammer.com/titles/tpdsl for more book information.
 ***/
-public class AddNode extends ExprNode {
-    ExprNode left, right; // named, node-specific, irregular children
-    public AddNode(ExprNode left, Token t, ExprNode right) {
-        super(t);
-        this.left = left;
-        this.right = right;
-    }
-    public void visit(VecMathVisitor visitor) {
-        visitor.visit(this);
-    }
+public class IntNode extends ExprNode {
+    public IntNode(Token token) { super(token); }
 }

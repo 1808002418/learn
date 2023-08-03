@@ -1,22 +1,21 @@
-package org.example.ch2.LL1;
+package org.example.ch4.homo;
 
-/**
- * 词法单元
- */
 public class Token {
+    public static final int INVALID_TOKEN_TYPE = 0;
+    public static final int PLUS = 1; // token types
+    public static final int INT = 2;
+
     private final int type;
     private final String text;
-    private final Lexer lexer;
 
-    public Token(int type, String text, Lexer lexer) {
+    public Token(int type, String text) {
         this.type = type;
         this.text = text;
-        this.lexer = lexer;
     }
 
     @Override
     public String toString() {
-        return String.format("<%s,%s>", lexer.getTokenName(type), text);
+        return text;
     }
 
     public int getType() {

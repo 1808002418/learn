@@ -19,6 +19,7 @@ public class ListParser extends Parser{
     }
 
     public void element(){
+        // switch执行效率比if高
         switch (LA(1)){
             case ListLexer.LBRACK:
                 list();

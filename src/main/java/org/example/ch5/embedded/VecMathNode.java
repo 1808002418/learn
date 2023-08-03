@@ -1,4 +1,4 @@
-/***
+package org.example.ch5.embedded; /***
  * Excerpted from "Language Implementation Patterns",
  * published by The Pragmatic Bookshelf.
  * Copyrights apply to this code. It may not be used to create training material, 
@@ -6,14 +6,11 @@
  * We make no guarantees that this code is fit for any purpose. 
  * Visit http://www.pragmaticprogrammer.com/titles/tpdsl for more book information.
 ***/
-public class AddNode extends ExprNode {
-    ExprNode left, right; // named, node-specific, irregular children
-    public AddNode(ExprNode left, Token t, ExprNode right) {
-        super(t);
-        this.left = left;
-        this.right = right;
-    }
-    public void visit(VecMathVisitor visitor) {
-        visitor.visit(this);
+/** A generic heterogeneous tree node used in our vector math trees */
+public abstract class VecMathNode extends HeteroAST {
+    public VecMathNode() {;}
+    public VecMathNode(Token token) { super(token); }
+    public void print() { // generic print tree-walker method
+        System.out.print(token != null ? token.toString() : "<null>");
     }
 }

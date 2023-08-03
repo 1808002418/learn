@@ -1,3 +1,5 @@
+package org.example.ch5.embedded;
+
 /***
  * Excerpted from "Language Implementation Patterns",
  * published by The Pragmatic Bookshelf.
@@ -13,7 +15,9 @@ public class AddNode extends ExprNode {
         this.left = left;
         this.right = right;
     }
-    public void visit(VecMathVisitor visitor) {
-        visitor.visit(this);
+    public void print() {
+        left.print();          // walk left child
+        System.out.print("+"); // print operator
+        right.print();         // walk right child
     }
 }

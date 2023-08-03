@@ -10,5 +10,9 @@ public class ListParserTest {
         ListLexer lexer = new ListLexer(input);
         ListParser parser = new ListParser(lexer, 3);
         parser.list();
+
+        System.out.println((char) 0xFFFF);
+        System.out.println((char) 0x0000);
+        System.out.println(Integer.toHexString(','));
     }
 }
